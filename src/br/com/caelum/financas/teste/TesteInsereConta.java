@@ -16,7 +16,7 @@ public class TesteInsereConta {
 		ContaDAO dao = new ContaDAO(entityManager);
 
 		Conta conta = new Conta();
-		conta.setTitular("José Roberto");
+		conta.setTitular("Isabella");
 		conta.setBanco("Banco do Brasil");
 		conta.setNumero("123456-6");
 		conta.setAgencia("0999");
