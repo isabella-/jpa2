@@ -34,4 +34,4 @@ public class TesteInsereConta {
 
 	}
 
-}
+} // Transient p/ Managed

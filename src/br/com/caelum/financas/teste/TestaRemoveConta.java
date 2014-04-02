@@ -10,10 +10,16 @@ public class TestaRemoveConta {
 	public static void main (String [] args){
 		EntityManager em = new JPAUtil().getEntityManager();
 		ContaDAO dao = new ContaDAO(em);
+		em.clear();
 		em.getTransaction().begin();
 		
-		Conta conta = dao.busca(14);
+		
+		Conta conta = dao.busca(4);
+		
+		//conta = dao.busca(1);
 		dao.remove(conta);
+		
+		System.out.println(conta.getBanco());
 		
 		em.getTransaction().commit();
 		em.close();
