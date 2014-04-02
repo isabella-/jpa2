@@ -15,8 +15,6 @@ public class TestaRemoveConta {
 		
 		
 		Conta conta = dao.busca(4);
-		
-		//conta = dao.busca(1);
 		dao.remove(conta);
 		
 		System.out.println(conta.getBanco());
