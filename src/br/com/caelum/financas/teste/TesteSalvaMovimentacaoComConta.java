@@ -17,28 +17,32 @@ public class TesteSalvaMovimentacaoComConta {
 	public static void main (String [] args){
 		
 		EntityManager em = new JPAUtil().getEntityManager();
-		//ContaDAO contaDAO = new ContaDAO(em);
-		//MovimentacaoDAO movimentacaoDAO = new MovimentacaoDAO(em);
-		
+		ContaDAO contaDao = new ContaDAO(em);
+		MovimentacaoDAO movimentacaoDao = new MovimentacaoDAO(em);
 		em.getTransaction().begin();
+		
 		Conta conta = new Conta();
 		conta.setBanco("Banco Santander");
 		conta.setNumero("99999-9");
 		conta.setAgencia("999");
 		conta.setTitular("Maria");		
 		
-		//contaDAO.adiciona(conta);
+		contaDao.adiciona(conta);
 		
 		Movimentacao movimentacao = new Movimentacao();
+		
+		
 		movimentacao.setConta(conta);
 		movimentacao.setData(Calendar.getInstance());
 		movimentacao.setDescricao("conta de luz - abril/2010");
 		movimentacao.setValor(new BigDecimal("100"));
 		movimentacao.setTipoMovimentacao(TipoMovimentacao.SAIDA);
+		movimentacao = em.getReference(Movimentacao.class, 4);
+		//System.out.println(movimentacao.getConta().getTitular());
+		movimentacao.getConta().setTitular("Isabella");
 		
-		em.persist(conta);
-		em.persist(movimentacao);
-		//movimentacaoDAO.adiciona(movimentacao);	
+		movimentacaoDao.adiciona(movimentacao);
+		
 		em.getTransaction().commit();
 		em.close();
 	

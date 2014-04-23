@@ -12,16 +12,15 @@ public class TestaBuscaComContaDaMovimentacao {
 		
 		EntityManager em = new JPAUtil().getEntityManager();
 		
+		em.getTransaction().begin();
+		
 		MovimentacaoDAO dao = new MovimentacaoDAO(em);
 		Movimentacao movimentacao = new Movimentacao();
-		
-		
-		em.getTransaction().begin();
-		dao.busca(5);
+		movimentacao = dao.busca(5);
 		System.out.println("O titular dessa conta e: " + movimentacao.getConta().getTitular());
-		em.getTransaction().commit();
-
 		
+		em.getTransaction().commit();
+		em.close();
 		
 
 	}
