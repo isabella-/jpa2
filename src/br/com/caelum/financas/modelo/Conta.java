@@ -1,9 +1,12 @@
 package br.com.caelum.financas.modelo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name = "Conta_Corrente")
@@ -18,9 +21,21 @@ public class Conta {
 	private String agencia;
 	private String numero;
 	private String banco;
+	
+	@OneToMany(mappedBy="conta")
+	private List<Movimentacao> movimentacoes;
 
 	@Column(name = "codigo")
 	private String codigoReferencia;
+	
+	
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
+	}
 
 	public String getTitular() {
 		return titular;
@@ -61,5 +76,4 @@ public class Conta {
 	public void setCodigoReferencia(String codigoReferencia) {
 		this.codigoReferencia = codigoReferencia;
 	}
-
 }

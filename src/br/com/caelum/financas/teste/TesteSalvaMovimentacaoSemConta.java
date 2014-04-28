@@ -31,6 +31,7 @@ public class TesteSalvaMovimentacaoSemConta {
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
+		
 		System.out.println("Movimentacao gravada com sucesso!");
 
 		long fim = System.currentTimeMillis();

@@ -42,6 +42,7 @@ public class TesteSalvaMovimentacaoComConta {
 		movimentacao.getConta().setTitular("Isabella");
 		
 		movimentacaoDao.adiciona(movimentacao);
+		//System.out.println(conta.getMovimentacoes().size());
 		
 		em.getTransaction().commit();
 		em.close();
